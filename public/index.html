@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!doctype html>
 <html>
   <head>
     <meta charset="utf-8" />
@@ -20,30 +20,67 @@
       }
 
       /* Per-section card colors */
-      .card-infinity { --card-accent: #5b8df7; --card-glow: rgba(91,141,247,0.14); --card-accent-border: rgba(91,141,247,0.38); }
-      .card-mavrik   { --card-accent: #e87e4f; --card-glow: rgba(232,126,79,0.14); --card-accent-border: rgba(232,126,79,0.38); }
-      .card-picolo   { --card-accent: #9b7cf8; --card-glow: rgba(155,124,248,0.14); --card-accent-border: rgba(155,124,248,0.38); }
-      .card-lstm     { --card-accent: #52c48a; --card-glow: rgba(82,196,138,0.14); --card-accent-border: rgba(82,196,138,0.38); }
-      .card-random   { --card-accent: #f0b840; --card-glow: rgba(240,184,64,0.14); --card-accent-border: rgba(240,184,64,0.38); }
+      .card-infinity {
+        --card-accent: #5b8df7;
+        --card-glow: rgba(91, 141, 247, 0.14);
+        --card-accent-border: rgba(91, 141, 247, 0.38);
+      }
+      .card-mavrik {
+        --card-accent: #e87e4f;
+        --card-glow: rgba(232, 126, 79, 0.14);
+        --card-accent-border: rgba(232, 126, 79, 0.38);
+      }
+      .card-picolo {
+        --card-accent: #9b7cf8;
+        --card-glow: rgba(155, 124, 248, 0.14);
+        --card-accent-border: rgba(155, 124, 248, 0.38);
+      }
+      .card-lstm {
+        --card-accent: #52c48a;
+        --card-glow: rgba(82, 196, 138, 0.14);
+        --card-accent-border: rgba(82, 196, 138, 0.38);
+      }
+      .card-random {
+        --card-accent: #f0b840;
+        --card-glow: rgba(240, 184, 64, 0.14);
+        --card-accent-border: rgba(240, 184, 64, 0.38);
+      }
 
       @keyframes fadeUp {
-        from { opacity: 0; transform: translateY(16px); }
-        to   { opacity: 1; transform: translateY(0); }
+        from {
+          opacity: 0;
+          transform: translateY(16px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
       }
 
       @keyframes float {
-        0%, 100% { transform: translateY(0); }
-        50%       { transform: translateY(-7px); }
+        0%,
+        100% {
+          transform: translateY(0);
+        }
+        50% {
+          transform: translateY(-7px);
+        }
       }
 
-      *, *::before, *::after {
+      *,
+      *::before,
+      *::after {
         box-sizing: border-box;
       }
 
       body {
         background: #111110;
         color: #e8e8e2;
-        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-family:
+          "Inter",
+          system-ui,
+          -apple-system,
+          sans-serif;
         font-size: 16px;
         line-height: 1.75;
         margin: 0;
@@ -143,12 +180,18 @@
       }
 
       @media (max-width: 800px) {
-        #projects-grid { grid-template-columns: repeat(2, 1fr); }
-        #lstm-card { grid-column: auto; }
+        #projects-grid {
+          grid-template-columns: repeat(2, 1fr);
+        }
+        #lstm-card {
+          grid-column: auto;
+        }
       }
 
       @media (max-width: 500px) {
-        #projects-grid { grid-template-columns: 1fr; }
+        #projects-grid {
+          grid-template-columns: 1fr;
+        }
       }
 
       /* Project cards */
@@ -162,19 +205,26 @@
         min-width: 0;
         opacity: 0;
         transform: translateY(28px);
-        transition: opacity 0.55s ease, transform 0.55s ease, box-shadow 0.2s ease;
+        transition:
+          opacity 0.55s ease,
+          transform 0.55s ease,
+          box-shadow 0.2s ease;
       }
 
       .project-card.in-view {
         opacity: 1;
         transform: translateY(0);
-        box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
       }
 
       .project-card.in-view:hover {
         transform: translateY(-3px);
-        box-shadow: 0 12px 36px rgba(0,0,0,0.5), 0 0 24px var(--card-glow, rgba(0,0,0,0));
-        transition: transform 0.2s ease, box-shadow 0.2s ease;
+        box-shadow:
+          0 12px 36px rgba(0, 0, 0, 0.5),
+          0 0 24px var(--card-glow, rgba(0, 0, 0, 0));
+        transition:
+          transform 0.2s ease,
+          box-shadow 0.2s ease;
       }
 
       .project-card h3 {
@@ -267,7 +317,11 @@
         font-size: 0.875rem;
         font-weight: 500;
         text-decoration: none;
-        transition: background 0.15s, border-color 0.15s, color 0.15s, transform 0.15s;
+        transition:
+          background 0.15s,
+          border-color 0.15s,
+          color 0.15s,
+          transform 0.15s;
         border: 1px solid transparent;
       }
 
@@ -321,7 +375,9 @@
         text-decoration: underline;
         text-decoration-color: var(--accent-border);
         text-underline-offset: 3px;
-        transition: text-decoration-color 0.15s, color 0.15s;
+        transition:
+          text-decoration-color 0.15s,
+          color 0.15s;
       }
 
       a:hover {
@@ -370,9 +426,10 @@
           <a href="https://sage.new" target="_blank" rel="noopener">SAGE</a>
           <br /><br />
           Previously I founded 3 other companies in the web3 space and raised VC
-          funding for all 3. Including from Binance Labs, Menlo Ventures, Village
-          Global, NGC, Nima, FJ Labs and prominent angels like Sandeep Nailwal,
-          Batuhan Dasgin, Ivan Bogatyy, Ashwin Ramachandran amongst others.
+          funding for all 3. Including from Binance Labs, Menlo Ventures,
+          Village Global, NGC, Nima, FJ Labs and prominent angels like Sandeep
+          Nailwal, Batuhan Dasgin, Ivan Bogatyy, Ashwin Ramachandran amongst
+          others.
           <br /><br />
           Studied CS in both undergrad and grad. Went to UW-Madison for grad
           school and specialized in Distributed Systems. Worked at Amazon and
@@ -381,15 +438,35 @@
 
         <h2>Links</h2>
         <div class="links-row">
-          <a href="https://www.linkedin.com/in/adikancherla/" target="_blank" class="link-linkedin">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          <a
+            href="https://www.linkedin.com/in/adikancherla/"
+            target="_blank"
+            class="link-linkedin"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+              />
+            </svg>
             LinkedIn
           </a>
           <a href="https://x.com/superrsage" target="_blank" class="link-x">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+              />
+            </svg>
           </a>
-          <a href="https://github.com/superrsage" target="_blank" class="link-github">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+          <a
+            href="https://github.com/superrsage"
+            target="_blank"
+            class="link-github"
+          >
+            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+              />
+            </svg>
             GitHub
           </a>
         </div>
@@ -397,646 +474,663 @@
         <h2>Projects</h2>
 
         <div id="projects-grid">
-        <div class="project-card card-infinity">
-          <h3>Infinity</h3>
-          <p>
-            A decentralized exchange for NFTs. Raised $3M in VC funding.
-          </p>
-          <ul>
-            <li>
-              NFT exchange contracts with autosniping and more:
-              <a
-                href="https://github.com/infinitydotxyz/exchange-contracts-v2"
-                target="_blank"
-                rel="noopener"
-                >Contracts</a
-              >
-            </li>
-            <li>
-              Frontend for the exchange:
-              <a
-                href="https://github.com/infinitydotxyz/fe-infinity"
-                target="_blank"
-                rel="noopener"
-                >Frontend</a
-              >
-            </li>
-            <li>
-              Backend for the exchange:
-              <a
-                href="https://github.com/infinitydotxyz/be-infinity"
-                target="_blank"
-                rel="noopener"
-                >Backend</a
-              >
-            </li>
-            <li>
-              Matching engine:
-              <a
-                href="https://github.com/infinitydotxyz/matching-engine"
-                target="_blank"
-                rel="noopener"
-                >Matching engine</a
-              >
-            </li>
-            <li>
-              Functions:
-              <a
-                href="https://github.com/infinitydotxyz/functions"
-                target="_blank"
-                rel="noopener"
-                >Functions</a
-              >
-            </li>
-            <li>
-              Library of functions:
-              <a
-                href="https://github.com/infinitydotxyz/lib"
-                target="_blank"
-                rel="noopener"
-                >Lib</a
-              >
-            </li>
-            <li>
-              NFT Collection Service:
-              <a
-                href="https://github.com/infinitydotxyz/nft-collection-service"
-                target="_blank"
-                rel="noopener"
-                >NFT Collection Service</a
-              >
-            </li>
-            <li>
-              Social data listener:
-              <a
-                href="https://github.com/infinitydotxyz/social-data-listener"
-                target="_blank"
-                rel="noopener"
-                >Social data listener</a
-              >
-            </li>
-            <li>
-              Sales liquidity collector:
-              <a
-                href="https://github.com/infinitydotxyz/sales-liquidity-collector"
-                target="_blank"
-                rel="noopener"
-                >Sales liquidity collector</a
-              >
-            </li>
-            <li>
-              Doge2048 Contracts:
-              <a
-                href="https://github.com/infinitydotxyz/doge2048-contracts"
-                target="_blank"
-                rel="noopener"
-                >Doge2048 Contracts</a
-              >
-            </li>
-            <li>
-              Transaction Broadcaster:
-              <a
-                href="https://github.com/infinitydotxyz/transaction-broadcaster"
-                target="_blank"
-                rel="noopener"
-                >Transaction Broadcaster</a
-              >
-            </li>
-            <li>
-              PleasrDoge:
-              <a
-                href="https://github.com/infinitydotxyz/pleasrdoge"
-                target="_blank"
-                rel="noopener"
-                >PleasrDoge</a
-              >
-            </li>
-            <li>
-              NFT sales listener:
-              <a
-                href="https://github.com/infinitydotxyz/nft-sales-listener"
-                target="_blank"
-                rel="noopener"
-                >NFT sales listener</a
-              >
-            </li>
-            <li>
-              NFT transfers:
-              <a
-                href="https://github.com/infinitydotxyz/nft-transfers"
-                target="_blank"
-                rel="noopener"
-                >NFT transfers</a
-              >
-            </li>
-            <li>
-              Pixelscore:
-              <a
-                href="https://github.com/infinitydotxyz/pixelscore"
-                target="_blank"
-                rel="noopener"
-                >Pixelscore</a
-              >
-            </li>
-            <li>
-              Pixelscore Frontend:
-              <a
-                href="https://github.com/infinitydotxyz/fe-pixelscore"
-                target="_blank"
-                rel="noopener"
-                >Pixelscore Frontend</a
-              >
-            </li>
-          </ul>
+          <div class="project-card card-infinity">
+            <h3>Infinity</h3>
+            <p>A decentralized exchange for NFTs. Raised $3M in VC funding.</p>
+            <ul>
+              <li>
+                NFT exchange contracts with autosniping and more:
+                <a
+                  href="https://github.com/infinitydotxyz/exchange-contracts-v2"
+                  target="_blank"
+                  rel="noopener"
+                  >Contracts</a
+                >
+              </li>
+              <li>
+                Frontend for the exchange:
+                <a
+                  href="https://github.com/infinitydotxyz/fe-infinity"
+                  target="_blank"
+                  rel="noopener"
+                  >Frontend</a
+                >
+              </li>
+              <li>
+                Backend for the exchange:
+                <a
+                  href="https://github.com/infinitydotxyz/be-infinity"
+                  target="_blank"
+                  rel="noopener"
+                  >Backend</a
+                >
+              </li>
+              <li>
+                Matching engine:
+                <a
+                  href="https://github.com/infinitydotxyz/matching-engine"
+                  target="_blank"
+                  rel="noopener"
+                  >Matching engine</a
+                >
+              </li>
+              <li>
+                Functions:
+                <a
+                  href="https://github.com/infinitydotxyz/functions"
+                  target="_blank"
+                  rel="noopener"
+                  >Functions</a
+                >
+              </li>
+              <li>
+                Library of functions:
+                <a
+                  href="https://github.com/infinitydotxyz/lib"
+                  target="_blank"
+                  rel="noopener"
+                  >Lib</a
+                >
+              </li>
+              <li>
+                NFT Collection Service:
+                <a
+                  href="https://github.com/infinitydotxyz/nft-collection-service"
+                  target="_blank"
+                  rel="noopener"
+                  >NFT Collection Service</a
+                >
+              </li>
+              <li>
+                Social data listener:
+                <a
+                  href="https://github.com/infinitydotxyz/social-data-listener"
+                  target="_blank"
+                  rel="noopener"
+                  >Social data listener</a
+                >
+              </li>
+              <li>
+                Sales liquidity collector:
+                <a
+                  href="https://github.com/infinitydotxyz/sales-liquidity-collector"
+                  target="_blank"
+                  rel="noopener"
+                  >Sales liquidity collector</a
+                >
+              </li>
+              <li>
+                Doge2048 Contracts:
+                <a
+                  href="https://github.com/infinitydotxyz/doge2048-contracts"
+                  target="_blank"
+                  rel="noopener"
+                  >Doge2048 Contracts</a
+                >
+              </li>
+              <li>
+                Transaction Broadcaster:
+                <a
+                  href="https://github.com/infinitydotxyz/transaction-broadcaster"
+                  target="_blank"
+                  rel="noopener"
+                  >Transaction Broadcaster</a
+                >
+              </li>
+              <li>
+                PleasrDoge:
+                <a
+                  href="https://github.com/infinitydotxyz/pleasrdoge"
+                  target="_blank"
+                  rel="noopener"
+                  >PleasrDoge</a
+                >
+              </li>
+              <li>
+                NFT sales listener:
+                <a
+                  href="https://github.com/infinitydotxyz/nft-sales-listener"
+                  target="_blank"
+                  rel="noopener"
+                  >NFT sales listener</a
+                >
+              </li>
+              <li>
+                NFT transfers:
+                <a
+                  href="https://github.com/infinitydotxyz/nft-transfers"
+                  target="_blank"
+                  rel="noopener"
+                  >NFT transfers</a
+                >
+              </li>
+              <li>
+                Pixelscore paper:
+                <a href="pixelscore.pdf" target="_blank" rel="noopener"
+                  >Pixelscore</a
+                >
+              </li>
+              <li>
+                Pixelscore:
+                <a
+                  href="https://github.com/infinitydotxyz/pixelscore"
+                  target="_blank"
+                  rel="noopener"
+                  >Pixelscore</a
+                >
+              </li>
+              <li>
+                Pixelscore Frontend:
+                <a
+                  href="https://github.com/infinitydotxyz/fe-pixelscore"
+                  target="_blank"
+                  rel="noopener"
+                  >Pixelscore Frontend</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-card card-mavrik">
+            <h3>Mavrik labs&nbsp;</h3>
+            <p>Pump fun for NFTs. Incubated at Binance Labs Season 2.</p>
+            <ul>
+              <li>
+                NFT Company demo. Pump fun for NFTs (June 2019):
+                <a
+                  href="https://youtu.be/SbkAfji3dq0"
+                  target="_blank"
+                  rel="noopener"
+                  >https://youtu.be/SbkAfji3dq0</a
+                >
+              </li>
+              <li>
+                Landing page - ​​<a
+                  href="https://bitbucket.org/mavriklabs/landing-page"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/mavriklabs/landing-page</a
+                >
+              </li>
+              <li>
+                Landing page 2 -
+                <a
+                  href="https://bitbucket.org/mavriklabs/mavrik-landing-page"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/mavriklabs/mavrik-landing-page</a
+                >
+              </li>
+              <li>
+                Landing page 3 -
+                <a
+                  href="https://bitbucket.org/mavriklabs/landing-page-backend"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/mavriklabs/landing-page-backend</a
+                >
+              </li>
+              <li>
+                Mavrik money Android -
+                <a
+                  href="https://bitbucket.org/mavriklabs/mavrik-money-android"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/mavriklabs/mavrik-money-android</a
+                >
+              </li>
+              <li>
+                Mavrik money backend -
+                <a
+                  href="https://bitbucket.org/mavriklabs/mavrik-money-backend"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/mavriklabs/mavrik-money-backend</a
+                >
+              </li>
+              <li>
+                Mavrik money ios -
+                <a
+                  href="https://bitbucket.org/mavriklabs/mavrik-money-ios"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/mavriklabs/mavrik-money-ios</a
+                >
+              </li>
+              <li>
+                Mock apis -
+                <a
+                  href="https://bitbucket.org/mavriklabs/builder-mock-apis"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/mavriklabs/builder-mock-apis</a
+                >
+              </li>
+              <li>
+                NFT Smart contracts:
+                <a
+                  href="https://github.com/superrsage/mavrik-contracts-backend"
+                  target="_blank"
+                  rel="noopener"
+                  >https://github.com/superrsage/mavrik-contracts-backend</a
+                >
+              </li>
+              <li>
+                Satoshi treasure:
+                <a
+                  href="https://github.com/superrsage/satoshi-treasure"
+                  target="_blank"
+                  rel="noopener"
+                  >https://github.com/superrsage/satoshi-treasure</a
+                >
+              </li>
+              <li>
+                MultiNFT - an ERC-1155 project:
+                <a
+                  href="https://github.com/superrsage/multinft-backend"
+                  target="_blank"
+                  rel="noopener"
+                  >https://github.com/superrsage/multinft-backend</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-card card-picolo">
+            <h3>Picolo Labs&nbsp;</h3>
+            <p>
+              A decentralized database network to store queryable data. Meant to
+              be used by Dapps built on blockchains. Raised $2.2M in funding
+              from top Silicon Valley investors.&nbsp;
+            </p>
+            <ul>
+              <li>
+                Whitepaper:
+                <a href="picolo.pdf" target="_blank" rel="noopener">here</a>
+              </li>
+              <li>
+                A predoc for the whitepaper is here:
+                <a
+                  href="https://docs.google.com/document/d/1U0byLVq3-wvurX99fU3RiKGaDFIuHKZgQrkI4tDRLtY/edit?usp=sharing"
+                  target="_blank"
+                  rel="noopener"
+                  >https://docs.google.com/document/d/1U0byLVq3-wvurX99fU3RiKGaDFIuHKZgQrkI4tDRLtY/edit?usp=sharing</a
+                >
+              </li>
+            </ul>
+            <p class="sub-label">Demos:</p>
+            <ul>
+              <li>
+                Gas savings achieved by storing cryptokitties offchain :) :
+                <a
+                  href="https://www.youtube.com/watch?v=w8ayaB_HQ8A"
+                  target="_blank"
+                  rel="noopener"
+                  >https://www.youtube.com/watch?v=w8ayaB_HQ8A</a
+                >
+              </li>
+              <li>
+                Picolo vs Filecoin:
+                <a
+                  href="https://youtu.be/qWKJZo2WghU"
+                  target="_blank"
+                  rel="noopener"
+                  >https://youtu.be/qWKJZo2WghU</a
+                >
+              </li>
+            </ul>
+            <p class="sub-label">Related code:</p>
+            <ul>
+              <li>
+                <a
+                  href="https://bitbucket.org/zzxcodes/picolonet-core"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/picolonet-core</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://bitbucket.org/zzxcodes/picolonetbot"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/picolonetbot</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://bitbucket.org/zzxcodes/picolo-wcef"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/picolo-wcef</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-card card-lstm" id="lstm-card">
+            <h3>LSTM</h3>
+            <p>
+              LSTM for predicting crypto prices: Current thinking towards
+              methods for training AI algorithms that make price predictions for
+              cryptos and take bets from users are discussed. AI algorithms used
+              here work on two distinct types of data: unstructured in the form
+              of text and structured in the form of exchange data and bets on
+              the platform. While the research on sentiment analysis on
+              unstructured data is vast and several off the shelf solutions are
+              available, we explore an approach based on LSTM networks. For
+              structured data, a novel approach is proposed where the state of
+              the platform (all current bets, buzzing topics, randomly
+              timestamped snapshots of past platform state) is reduced to a
+              "game state" and presented as a Markov Decision Process. Incentive
+              decay functions that govern the payouts made to users for
+              contributing on the platform are discussed.
+            </p>
+            <ul>
+              <li>
+                Link to paper
+                <a href="lstm.pdf" target="_blank" rel="noopener">here</a>
+              </li>
+            </ul>
+          </div>
+
+          <div class="project-card card-random" id="random-card">
+            <h3>Random</h3>
+            <ol>
+              <li>
+                Can&rsquo;t remember what I wrote these functions for:
+                <a
+                  href="https://github.com/adikancherla/texfiles/blob/master/paper.pdf"
+                  target="_blank"
+                  rel="noopener"
+                  >https://github.com/adikancherla/texfiles/blob/master/paper.pdf</a
+                >
+              </li>
+              <li>
+                McAfee Pump n Dump bot:
+                <a
+                  href="https://github.com/adikancherla/mcafeePnDbot"
+                  target="_blank"
+                  rel="noopener"
+                  >https://github.com/superrsage/mcafeePnDbot</a
+                >
+              </li>
+              <li>
+                Bitmex trading bot:
+                <a
+                  href="https://github.com/adikancherla/bmbx"
+                  target="_blank"
+                  rel="noopener"
+                  >https://github.com/adikancherla/bmbx</a
+                >
+                (private repo due to api keys, will make it public after
+                cleanup)
+              </li>
+              <li>
+                PDF form filler:
+                <a
+                  href="https://bitbucket.org/mavriklabs/pdf-form-filler"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/mavriklabs/pdf-form-filler</a
+                >
+              </li>
+              <li>
+                Edge Compute: POC to distribute compute workloads to edge
+                devices:
+                <a
+                  href="https://bitbucket.org/zzxcodes/edge-demo"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/edge-demo</a
+                >
+              </li>
+              <li>
+                Scripts: Handy zsh scripts:
+                <a
+                  href="https://bitbucket.org/zzxcodes/files"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/files</a
+                >
+              </li>
+              <li>
+                Electroneum miner lmao:&nbsp;
+                <ul>
+                  <li>
+                    <a
+                      href="https://bitbucket.org/zzxcodes/etnminer-pool"
+                      target="_blank"
+                      rel="noopener"
+                      >https://bitbucket.org/zzxcodes/etnminer-pool</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://bitbucket.org/zzxcodes/etnminer-frontend"
+                      target="_blank"
+                      rel="noopener"
+                      >https://bitbucket.org/zzxcodes/etnminer-frontend</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://bitbucket.org/zzxcodes/etnminer-backend"
+                      target="_blank"
+                      rel="noopener"
+                      >https://bitbucket.org/zzxcodes/etnminer-backend</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                Z Filesystem:
+                <a
+                  href="https://bitbucket.org/zzxcodes/zfs"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/zfs</a
+                >
+              </li>
+              <li>
+                Wishbox - Google but takes action instead of just
+                search:&nbsp;&nbsp;
+                <ul>
+                  <li>
+                    <a
+                      href="https://bitbucket.org/zzxcodes/wishbox"
+                      target="_blank"
+                      rel="noopener"
+                      >https://bitbucket.org/zzxcodes/wishbox</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://youtu.be/ZyPnl71cbT4"
+                      target="_blank"
+                      rel="noopener"
+                      >https://youtu.be/ZyPnl71cbT4</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                VidyaMap - learning via visualizations:
+                <a
+                  href="https://bitbucket.org/zzxcodes/vidyamap"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/vidyamap</a
+                >
+              </li>
+              <li>
+                Videoness - precursor to Snapchat Memories:&nbsp;
+                <ul>
+                  <li>
+                    <a
+                      href="https://bitbucket.org/zzxcodes/videoness_apps"
+                      target="_blank"
+                      rel="noopener"
+                      >https://bitbucket.org/zzxcodes/videoness_apps</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://bitbucket.org/zzxcodes/videoness"
+                      target="_blank"
+                      rel="noopener"
+                      >https://bitbucket.org/zzxcodes/videoness</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                The OS: OS for the world of IoT:
+                <a
+                  href="https://bitbucket.org/zzxcodes/theos"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/theos</a
+                >
+              </li>
+              <li>
+                TFTP: Some type of FTP:
+                <a
+                  href="https://bitbucket.org/zzxcodes/tftp"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/tftp</a
+                >
+              </li>
+              <li>
+                SimpleDB - a Redis like DB:
+                <a
+                  href="https://bitbucket.org/zzxcodes/simpledb"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/simpledb</a
+                >
+              </li>
+              <li>
+                My food truck - order food for pickup from trucks around the
+                Amazon campus in Seatlle:
+                <a
+                  href="https://bitbucket.org/zzxcodes/myfoodtruck"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/myfoodtruck</a
+                >
+              </li>
+              <li>
+                Lucy - AI assistant inspired by the movie of the same name:
+                <a
+                  href="https://bitbucket.org/zzxcodes/lucy"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/lucy</a
+                >
+              </li>
+              <li>
+                Life, Universe and Everything:
+                <a
+                  href="https://bitbucket.org/zzxcodes/lifeuniverseandeverything"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/lifeuniverseandeverything</a
+                >
+              </li>
+              <li>
+                Grublr - leftover food donation app
+                <ul>
+                  <li>
+                    <a
+                      href="https://bitbucket.org/zzxcodes/grublraws"
+                      target="_blank"
+                      rel="noopener"
+                      >https://bitbucket.org/zzxcodes/grublraws</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      href="https://bitbucket.org/zzxcodes/grublr"
+                      target="_blank"
+                      rel="noopener"
+                      >https://bitbucket.org/zzxcodes/grublr</a
+                    >
+                  </li>
+                </ul>
+              </li>
+
+              <li>
+                Friend recommender:
+                <a
+                  href="https://bitbucket.org/zzxcodes/friendrecommender_v1"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/friendrecommender_v1</a
+                >
+              </li>
+              <li>
+                DistriRPC - distributed RPC:
+                <a
+                  href="https://bitbucket.org/zzxcodes/distrirpc"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/distrirpc</a
+                >
+              </li>
+              <li>
+                DistriJNA - high perf filesystem in userspace:
+                <a
+                  href="https://bitbucket.org/zzxcodes/distrifuse"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/distrifuse</a
+                >
+              </li>
+              <li>
+                Book Genre Finder:
+                <a
+                  href="https://bitbucket.org/zzxcodes/bookgenrefinder"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/bookgenrefinder</a
+                >
+              </li>
+              <li>
+                Atomize - Learn new concepts by breaking them down into the
+                smallest pieces:
+                <a
+                  href="https://bitbucket.org/zzxcodes/atomize"
+                  target="_blank"
+                  rel="noopener"
+                  >https://bitbucket.org/zzxcodes/atomize</a
+                >
+              </li>
+            </ol>
+          </div>
         </div>
-
-        <div class="project-card card-mavrik">
-          <h3>Mavrik labs&nbsp;</h3>
-          <p>
-            Pump fun for NFTs. Incubated at Binance Labs Season 2.
-          </p>
-          <ul>
-            <li>
-              NFT Company demo. Pump fun for NFTs (June 2019):
-              <a href="https://youtu.be/SbkAfji3dq0" target="_blank" rel="noopener"
-                >https://youtu.be/SbkAfji3dq0</a
-              >
-            </li>
-            <li>
-              Landing page - ​​<a
-                href="https://bitbucket.org/mavriklabs/landing-page"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/mavriklabs/landing-page</a
-              >
-            </li>
-            <li>
-              Landing page 2 -
-              <a
-                href="https://bitbucket.org/mavriklabs/mavrik-landing-page"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/mavriklabs/mavrik-landing-page</a
-              >
-            </li>
-            <li>
-              Landing page 3 -
-              <a
-                href="https://bitbucket.org/mavriklabs/landing-page-backend"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/mavriklabs/landing-page-backend</a
-              >
-            </li>
-            <li>
-              Mavrik money Android -
-              <a
-                href="https://bitbucket.org/mavriklabs/mavrik-money-android"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/mavriklabs/mavrik-money-android</a
-              >
-            </li>
-            <li>
-              Mavrik money backend -
-              <a
-                href="https://bitbucket.org/mavriklabs/mavrik-money-backend"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/mavriklabs/mavrik-money-backend</a
-              >
-            </li>
-            <li>
-              Mavrik money ios -
-              <a
-                href="https://bitbucket.org/mavriklabs/mavrik-money-ios"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/mavriklabs/mavrik-money-ios</a
-              >
-            </li>
-            <li>
-              Mock apis -
-              <a
-                href="https://bitbucket.org/mavriklabs/builder-mock-apis"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/mavriklabs/builder-mock-apis</a
-              >
-            </li>
-            <li>
-              NFT Smart contracts:
-              <a
-                href="https://github.com/superrsage/mavrik-contracts-backend"
-                target="_blank"
-                rel="noopener"
-                >https://github.com/superrsage/mavrik-contracts-backend</a
-              >
-            </li>
-            <li>
-              Satoshi treasure:
-              <a
-                href="https://github.com/superrsage/satoshi-treasure"
-                target="_blank"
-                rel="noopener"
-                >https://github.com/superrsage/satoshi-treasure</a
-              >
-            </li>
-            <li>
-              MultiNFT - an ERC-1155 project:
-              <a
-                href="https://github.com/superrsage/multinft-backend"
-                target="_blank"
-                rel="noopener"
-                >https://github.com/superrsage/multinft-backend</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <div class="project-card card-picolo">
-          <h3>Picolo Labs&nbsp;</h3>
-          <p>
-            A decentralized database network to store queryable data. Meant to be
-            used by Dapps built on blockchains. Raised $2.2M in funding from top
-            Silicon Valley investors.&nbsp;
-          </p>
-          <ul>
-            <li>
-              Whitepaper:
-              <a href="picolo.pdf" target="_blank" rel="noopener">here</a>
-            </li>
-            <li>
-              A predoc for the whitepaper is here:
-              <a
-                href="https://docs.google.com/document/d/1U0byLVq3-wvurX99fU3RiKGaDFIuHKZgQrkI4tDRLtY/edit?usp=sharing"
-                target="_blank"
-                rel="noopener"
-                >https://docs.google.com/document/d/1U0byLVq3-wvurX99fU3RiKGaDFIuHKZgQrkI4tDRLtY/edit?usp=sharing</a
-              >
-            </li>
-          </ul>
-          <p class="sub-label">Demos:</p>
-          <ul>
-            <li>
-              Gas savings achieved by storing cryptokitties offchain :) :
-              <a
-                href="https://www.youtube.com/watch?v=w8ayaB_HQ8A"
-                target="_blank"
-                rel="noopener"
-                >https://www.youtube.com/watch?v=w8ayaB_HQ8A</a
-              >
-            </li>
-            <li>
-              Picolo vs Filecoin:
-              <a href="https://youtu.be/qWKJZo2WghU" target="_blank" rel="noopener"
-                >https://youtu.be/qWKJZo2WghU</a
-              >
-            </li>
-          </ul>
-          <p class="sub-label">Related code:</p>
-          <ul>
-            <li>
-              <a
-                href="https://bitbucket.org/zzxcodes/picolonet-core"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/picolonet-core</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://bitbucket.org/zzxcodes/picolonetbot"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/picolonetbot</a
-              >
-            </li>
-            <li>
-              <a
-                href="https://bitbucket.org/zzxcodes/picolo-wcef"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/picolo-wcef</a
-              >
-            </li>
-          </ul>
-        </div>
-
-        <div class="project-card card-lstm" id="lstm-card">
-          <h3>LSTM</h3>
-          <p>
-            LSTM for predicting crypto prices: Current thinking towards methods for
-            training AI algorithms that make price predictions for cryptos and take
-            bets from users are discussed. AI algorithms used here work on two
-            distinct types of data: unstructured in the form of text and structured
-            in the form of exchange data and bets on the platform. While the
-            research on sentiment analysis on unstructured data is vast and several
-            off the shelf solutions are available, we explore an approach based on
-            LSTM networks. For structured data, a novel approach is proposed where
-            the state of the platform (all current bets, buzzing topics, randomly
-            timestamped snapshots of past platform state) is reduced to a "game
-            state" and presented as a Markov Decision Process. Incentive decay
-            functions that govern the payouts made to users for contributing on the
-            platform are discussed.
-          </p>
-          <ul>
-            <li>
-              Link to paper <a href="lstm.pdf" target="_blank" rel="noopener">here</a>
-            </li>
-          </ul>
-        </div>
-
-        <div class="project-card card-random" id="random-card">
-          <h3>Random</h3>
-          <ol>
-            <li>
-              Can&rsquo;t remember what I wrote these functions for:
-              <a
-                href="https://github.com/superrsage/texfiles/blob/master/paper.pdf"
-                target="_blank"
-                rel="noopener"
-                >https://github.com/superrsage/texfiles/blob/master/paper.pdf</a
-              >
-            </li>
-            <li>
-              McAfee Pump n Dump bot:
-              <a
-                href="https://github.com/superrsage/mcafeePnDbot"
-                target="_blank"
-                rel="noopener"
-                >https://github.com/superrsage/mcafeePnDbot</a
-              >
-            </li>
-            <li>
-              Bitmex trading bot:
-              <a
-                href="https://github.com/superrsage/bmbx"
-                target="_blank"
-                rel="noopener"
-                >https://github.com/superrsage/bmbx</a
-              >
-              (private repo due to api keys, will make it public after cleanup)
-            </li>
-            <li>
-              PDF form filler:
-              <a
-                href="https://bitbucket.org/mavriklabs/pdf-form-filler"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/mavriklabs/pdf-form-filler</a
-              >
-            </li>
-            <li>
-              Edge Compute: POC to distribute compute workloads to edge devices:
-              <a
-                href="https://bitbucket.org/zzxcodes/edge-demo"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/edge-demo</a
-              >
-            </li>
-            <li>
-              Scripts: Handy zsh scripts:
-              <a
-                href="https://bitbucket.org/zzxcodes/files"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/files</a
-              >
-            </li>
-            <li>
-              Electroneum miner lmao:&nbsp;
-              <ul>
-                <li>
-                  <a
-                    href="https://bitbucket.org/zzxcodes/etnminer-pool"
-                    target="_blank"
-                    rel="noopener"
-                    >https://bitbucket.org/zzxcodes/etnminer-pool</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://bitbucket.org/zzxcodes/etnminer-frontend"
-                    target="_blank"
-                    rel="noopener"
-                    >https://bitbucket.org/zzxcodes/etnminer-frontend</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://bitbucket.org/zzxcodes/etnminer-backend"
-                    target="_blank"
-                    rel="noopener"
-                    >https://bitbucket.org/zzxcodes/etnminer-backend</a
-                  >
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              Z Filesystem:
-              <a
-                href="https://bitbucket.org/zzxcodes/zfs"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/zfs</a
-              >
-            </li>
-            <li>
-              Wishbox - Google but takes action instead of just search:&nbsp;&nbsp;
-              <ul>
-                <li>
-                  <a
-                    href="https://bitbucket.org/zzxcodes/wishbox"
-                    target="_blank"
-                    rel="noopener"
-                    >https://bitbucket.org/zzxcodes/wishbox</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://youtu.be/ZyPnl71cbT4"
-                    target="_blank"
-                    rel="noopener"
-                    >https://youtu.be/ZyPnl71cbT4</a
-                  >
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              VidyaMap - learning via visualizations:
-              <a
-                href="https://bitbucket.org/zzxcodes/vidyamap"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/vidyamap</a
-              >
-            </li>
-            <li>
-              Videoness - precursor to Snapchat Memories:&nbsp;
-              <ul>
-                <li>
-                  <a
-                    href="https://bitbucket.org/zzxcodes/videoness_apps"
-                    target="_blank"
-                    rel="noopener"
-                    >https://bitbucket.org/zzxcodes/videoness_apps</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://bitbucket.org/zzxcodes/videoness"
-                    target="_blank"
-                    rel="noopener"
-                    >https://bitbucket.org/zzxcodes/videoness</a
-                  >
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              The OS: OS for the world of IoT:
-              <a
-                href="https://bitbucket.org/zzxcodes/theos"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/theos</a
-              >
-            </li>
-            <li>
-              TFTP: Some type of FTP:
-              <a
-                href="https://bitbucket.org/zzxcodes/tftp"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/tftp</a
-              >
-            </li>
-            <li>
-              SimpleDB - a Redis like DB:
-              <a
-                href="https://bitbucket.org/zzxcodes/simpledb"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/simpledb</a
-              >
-            </li>
-            <li>
-              My food truck - order food for pickup from trucks around the Amazon
-              campus in Seatlle:
-              <a
-                href="https://bitbucket.org/zzxcodes/myfoodtruck"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/myfoodtruck</a
-              >
-            </li>
-            <li>
-              Lucy - AI assistant inspired by the movie of the same name:
-              <a
-                href="https://bitbucket.org/zzxcodes/lucy"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/lucy</a
-              >
-            </li>
-            <li>
-              Life, Universe and Everything:
-              <a
-                href="https://bitbucket.org/zzxcodes/lifeuniverseandeverything"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/lifeuniverseandeverything</a
-              >
-            </li>
-            <li>
-              Grublr - leftover food donation app
-              <ul>
-                <li>
-                  <a
-                    href="https://bitbucket.org/zzxcodes/grublraws"
-                    target="_blank"
-                    rel="noopener"
-                    >https://bitbucket.org/zzxcodes/grublraws</a
-                  >
-                </li>
-                <li>
-                  <a
-                    href="https://bitbucket.org/zzxcodes/grublr"
-                    target="_blank"
-                    rel="noopener"
-                    >https://bitbucket.org/zzxcodes/grublr</a
-                  >
-                </li>
-              </ul>
-            </li>
-
-            <li>
-              Friend recommender:
-              <a
-                href="https://bitbucket.org/zzxcodes/friendrecommender_v1"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/friendrecommender_v1</a
-              >
-            </li>
-            <li>
-              DistriRPC - distributed RPC:
-              <a
-                href="https://bitbucket.org/zzxcodes/distrirpc"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/distrirpc</a
-              >
-            </li>
-            <li>
-              DistriJNA - high perf filesystem in userspace:
-              <a
-                href="https://bitbucket.org/zzxcodes/distrifuse"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/distrifuse</a
-              >
-            </li>
-            <li>
-              Book Genre Finder:
-              <a
-                href="https://bitbucket.org/zzxcodes/bookgenrefinder"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/bookgenrefinder</a
-              >
-            </li>
-            <li>
-              Atomize - Learn new concepts by breaking them down into the smallest
-              pieces:
-              <a
-                href="https://bitbucket.org/zzxcodes/atomize"
-                target="_blank"
-                rel="noopener"
-                >https://bitbucket.org/zzxcodes/atomize</a
-              >
-            </li>
-          </ol>
-        </div>
-        </div> <!-- /projects-grid -->
+        <!-- /projects-grid -->
       </div>
     </div>
 
     <script>
       // Scroll-triggered card animations
-      const cards = document.querySelectorAll('.project-card');
-      const io = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('in-view');
-            io.unobserve(entry.target);
-          }
-        });
-      }, { threshold: 0.07 });
+      const cards = document.querySelectorAll(".project-card");
+      const io = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("in-view");
+              io.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.07 },
+      );
 
       cards.forEach((card, i) => {
         card.style.transitionDelay = `${i * 0.07}s`;

@@ -1,5 +1,5 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -8,48 +8,35 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap"
       rel="stylesheet"
     />
 
     <style media="screen">
+      /* Gruvbox material dark */
       :root {
-        --accent: #d4916c;
-        --accent-dim: rgba(212, 145, 108, 0.15);
-        --accent-border: rgba(212, 145, 108, 0.35);
-      }
-
-      /* Per-section card colors */
-      .card-infinity {
-        --card-accent: #5b8df7;
-        --card-glow: rgba(91, 141, 247, 0.14);
-        --card-accent-border: rgba(91, 141, 247, 0.38);
-      }
-      .card-mavrik {
-        --card-accent: #e87e4f;
-        --card-glow: rgba(232, 126, 79, 0.14);
-        --card-accent-border: rgba(232, 126, 79, 0.38);
-      }
-      .card-picolo {
-        --card-accent: #9b7cf8;
-        --card-glow: rgba(155, 124, 248, 0.14);
-        --card-accent-border: rgba(155, 124, 248, 0.38);
-      }
-      .card-lstm {
-        --card-accent: #52c48a;
-        --card-glow: rgba(82, 196, 138, 0.14);
-        --card-accent-border: rgba(82, 196, 138, 0.38);
-      }
-      .card-random {
-        --card-accent: #f0b840;
-        --card-glow: rgba(240, 184, 64, 0.14);
-        --card-accent-border: rgba(240, 184, 64, 0.38);
+        --bg: #0d0e0f;
+        --bg-1: #131415;
+        --bg-2: #1a1c1e;
+        --line: #252729;
+        --line-2: #3a3d40;
+        --fg: #d4be98;
+        --fg-bright: #ddc7a1;
+        --muted: #7c6f64;
+        --dim: #7a736a;
+        --green: #b8c572;
+        --aqua: #88bfb3;
+        --mint: #8fc493;
+        --yellow: #e0b05e;
+        --orange: #f09658;
+        --red: #ef7d6e;
+        --purple: #d3869b;
       }
 
       @keyframes fadeUp {
         from {
           opacity: 0;
-          transform: translateY(16px);
+          transform: translateY(10px);
         }
         to {
           opacity: 1;
@@ -57,13 +44,9 @@
         }
       }
 
-      @keyframes float {
-        0%,
-        100% {
-          transform: translateY(0);
-        }
+      @keyframes blink {
         50% {
-          transform: translateY(-7px);
+          opacity: 0;
         }
       }
 
@@ -73,1081 +56,1059 @@
         box-sizing: border-box;
       }
 
+      html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 72px;
+      }
+
       body {
-        background: #111110;
-        color: #e8e8e2;
-        font-family:
-          "Inter",
-          system-ui,
-          -apple-system,
-          sans-serif;
-        font-size: 16px;
-        line-height: 1.75;
+        background: var(--bg);
+        color: var(--fg);
+        font-family: "JetBrains Mono", ui-monospace, monospace;
+        font-size: 14px;
+        line-height: 1.7;
         margin: 0;
-        padding: 0;
         overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
       }
 
-      #page-wrapper {
-        max-width: 1100px;
-        margin: 0 auto;
-        padding: 48px 16px 80px;
+      ::selection {
+        background: var(--line-2);
+        color: var(--fg-bright);
       }
 
-      #container {
-        counter-reset: global-counter;
-      }
-
-      /* Hero */
-      #hero {
-        text-align: center;
-        margin-bottom: 48px;
-      }
-
-      #hero h3 {
-        font-size: 1rem;
-        font-weight: 400;
-        color: #888880;
-        margin: 0 0 24px;
-        line-height: 1.6;
-        max-width: 520px;
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      #hero {
-        animation: fadeUp 0.5s ease both;
-      }
-
-      #heroImg {
-        width: 180px;
-        height: 180px;
-        object-fit: cover;
-        border-radius: 50%;
-        border: 3px solid #2a2a28;
-        display: block;
-        margin: 0 auto;
-        animation: float 5s ease-in-out infinite;
-      }
-
-      @media (max-width: 400px) {
-        #heroImg {
-          width: 140px;
-          height: 140px;
-        }
-      }
-
-      /* Bio */
-      #container p {
-        margin: 0 0 1.25rem;
-        color: #c8c8c2;
-      }
-
-      /* Section headings */
-      #container h2 {
-        font-size: 0.75rem;
-        font-weight: 600;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: #55554f;
-        margin: 48px 0 16px;
-        padding-bottom: 8px;
-        border-bottom: 1px solid #222220;
-      }
-
-      #container h3 {
-        font-size: 1.05rem;
-        font-weight: 600;
-        color: #e8e8e2;
-        margin: 32px 0 4px;
-      }
-
-      #container h3:first-of-type {
-        margin-top: 0;
-      }
-
-      /* Projects grid */
-      #projects-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-        align-items: start;
-      }
-
-      #random-card,
-      #lstm-card {
-        grid-column: 1 / -1;
-      }
-
-      @media (max-width: 800px) {
-        #projects-grid {
-          grid-template-columns: repeat(2, 1fr);
-        }
-        #lstm-card {
-          grid-column: auto;
-        }
-      }
-
-      @media (max-width: 500px) {
-        #projects-grid {
-          grid-template-columns: 1fr;
-        }
-      }
-
-      /* Project cards */
-      .project-card {
-        background: #1a1a18;
-        border: 1px solid #2a2a28;
-        border-left: 3px solid var(--card-accent-border, var(--accent-border));
-        border-radius: 10px;
-        padding: 20px 24px;
-        overflow-wrap: break-word;
-        min-width: 0;
-        opacity: 0;
-        transform: translateY(28px);
-        transition:
-          opacity 0.55s ease,
-          transform 0.55s ease,
-          box-shadow 0.2s ease;
-      }
-
-      .project-card.in-view {
-        opacity: 1;
-        transform: translateY(0);
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-      }
-
-      .project-card.in-view:hover {
-        transform: translateY(-3px);
-        box-shadow:
-          0 12px 36px rgba(0, 0, 0, 0.5),
-          0 0 24px var(--card-glow, rgba(0, 0, 0, 0));
-        transition:
-          transform 0.2s ease,
-          box-shadow 0.2s ease;
-      }
-
-      .project-card h3 {
-        margin-top: 0;
-        margin-bottom: 4px;
-        font-size: 1rem;
-        font-weight: 600;
-      }
-
-      .project-card > p {
-        margin: 0 0 12px;
-        color: #888880;
-        font-size: 0.9rem;
-      }
-
-      .project-card ul,
-      .project-card > p.sub-label {
-        margin: 0;
-        padding-left: 0;
-        list-style: none;
-      }
-
-      .project-card > ul > li {
-        font-size: 0.875rem;
-        padding: 4px 0;
-        border-top: 1px solid #222220;
-        color: #888880;
-        counter-increment: global-counter;
-      }
-
-      .project-card > ul > li::before {
-        content: counter(global-counter) ".";
-        color: var(--card-accent, var(--accent));
-        font-weight: 600;
-        font-size: 0.8rem;
-        margin-right: 6px;
-      }
-
-      .project-card > ul > li:first-child {
-        border-top: none;
-      }
-
-      /* Random section (ordered list) */
-
-      #random-card > ol {
-        margin: 0;
-        padding-left: 0;
-      }
-
-      #random-card > ol > li {
-        font-size: 0.875rem;
-        padding: 4px 0;
-        color: #888880;
-        counter-increment: global-counter;
-        list-style: none;
-      }
-
-      #random-card > ol > li::before {
-        content: counter(global-counter) ".";
-        color: var(--card-accent, var(--accent));
-        font-weight: 600;
-        font-size: 0.8rem;
-        margin-right: 6px;
-      }
-
-      #random-card > ol > li > ul {
-        margin: 4px 0 0;
-        padding-left: 16px;
-      }
-
-      #random-card > ol > li > ul > li {
-        font-size: 0.85rem;
-        color: #666660;
-        padding: 2px 0;
-      }
-
-      /* Links section */
-      .links-row {
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-      }
-
-      .links-row a {
-        display: inline-flex;
-        align-items: center;
-        gap: 7px;
-        padding: 6px 16px;
-        border-radius: 20px;
-        font-size: 0.875rem;
-        font-weight: 500;
-        text-decoration: none;
-        transition:
-          background 0.15s,
-          border-color 0.15s,
-          color 0.15s,
-          transform 0.15s;
-        border: 1px solid transparent;
-      }
-
-      .links-row a svg {
-        width: 16px;
-        height: 16px;
-        flex-shrink: 0;
-        fill: currentColor;
-      }
-
-      .links-row a:hover {
-        transform: translateY(-2px);
-      }
-
-      .link-linkedin {
-        background: rgba(10, 102, 194, 0.15);
-        border-color: rgba(10, 102, 194, 0.4);
-        color: #4fa3e0;
-      }
-      .link-linkedin:hover {
-        background: #0a66c2 !important;
-        border-color: #0a66c2 !important;
-        color: #fff !important;
-      }
-
-      .link-x {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: rgba(255, 255, 255, 0.2);
-        color: #e7e9ea;
-      }
-      .link-x:hover {
-        background: #000 !important;
-        border-color: #fff !important;
-        color: #fff !important;
-      }
-
-      .link-github {
-        background: rgba(110, 118, 129, 0.15);
-        border-color: rgba(110, 118, 129, 0.4);
-        color: #adbac7;
-      }
-      .link-github:hover {
-        background: #24292f !important;
-        border-color: #6e7681 !important;
-        color: #fff !important;
-      }
-
-      /* General links */
       a {
-        color: var(--accent);
-        text-decoration: underline;
-        text-decoration-color: var(--accent-border);
-        text-underline-offset: 3px;
-        transition:
-          text-decoration-color 0.15s,
-          color 0.15s;
+        color: var(--aqua);
+        text-decoration: none;
+        transition: color 0.15s;
       }
 
       a:hover {
-        color: #e8a87c;
-        text-decoration-color: #e8a87c;
+        color: var(--green);
       }
 
-      /* Links inside project cards inherit the card's accent color */
-      .project-card a {
-        color: var(--card-accent, var(--accent));
-        text-decoration-color: var(--card-accent-border, var(--accent-border));
+      .wrap {
+        max-width: 760px;
+        margin: 0 auto;
+        padding: 0 16px;
       }
 
-      .project-card a:hover {
-        filter: brightness(1.25);
-        text-decoration-color: var(--card-accent, var(--accent));
+      /* Top bar */
+      header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        background: rgba(13, 14, 15, 0.85);
+        backdrop-filter: blur(8px);
+        -webkit-backdrop-filter: blur(8px);
+        border-bottom: 1px solid var(--line);
       }
 
-      /* Sub-labels inside cards */
-      .sub-label {
-        font-size: 0.8rem;
+      header .wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 44px;
+      }
+
+      .brand {
+        color: var(--green);
+        font-weight: 500;
+      }
+
+      .brand .cursor {
+        display: inline-block;
+        width: 7px;
+        height: 14px;
+        margin-left: 3px;
+        vertical-align: -2px;
+        background: var(--green);
+        animation: blink 1.1s steps(1) infinite;
+      }
+
+      nav {
+        display: flex;
+        gap: 14px;
+        font-size: 12px;
+      }
+
+      nav a {
+        color: var(--dim);
+      }
+
+      nav a:hover {
+        color: var(--fg-bright);
+      }
+
+      main section {
+        animation: fadeUp 0.5s ease both;
+      }
+
+      /* Hero */
+      .hero {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 40px;
+        padding: 48px 0 24px;
+        align-items: start;
+      }
+
+      .portrait {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      #field {
+        width: 220px;
+        height: 220px;
+        display: block;
+      }
+
+      .caption {
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      .prompt-line {
+        color: var(--muted);
+        font-size: 12px;
+        margin: 0;
+      }
+
+      .prompt-line .tilde {
+        color: var(--yellow);
+      }
+
+      h1 {
+        font-size: 30px;
+        font-weight: 500;
+        color: var(--fg-bright);
+        margin: 2px 0 10px;
+        letter-spacing: -0.5px;
+      }
+
+      .bio {
+        color: var(--dim);
+        margin: 0 0 12px;
+        max-width: 52ch;
+      }
+
+      .bio strong {
+        color: var(--fg);
+        font-weight: 500;
+      }
+
+      .now {
+        margin: 0 0 18px;
+        color: var(--dim);
+      }
+
+      .now .arrow {
+        color: var(--green);
+        margin-right: 6px;
+      }
+
+      .now a {
+        color: var(--yellow);
         font-weight: 600;
-        text-transform: uppercase;
-        letter-spacing: 0.06em;
-        color: var(--card-accent, var(--accent));
-        opacity: 0.75;
-        margin: 12px 0 4px !important;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        margin: 0 0 20px;
+        padding: 0;
+        list-style: none;
+      }
+
+      .tags li {
+        font-size: 11px;
+        padding: 1px 8px;
+        border: 1px solid var(--line);
+        background: var(--bg-1);
+        border-radius: 2px;
+        color: var(--c, var(--fg));
+      }
+
+      .socials {
+        display: flex;
+        gap: 6px;
+        margin-bottom: 18px;
+      }
+
+      .socials a {
+        display: grid;
+        place-items: center;
+        width: 30px;
+        height: 30px;
+        color: var(--dim);
+        border-radius: 3px;
+      }
+
+      .socials a:hover {
+        color: var(--fg-bright);
+        background: var(--bg-2);
+      }
+
+      .socials svg {
+        width: 16px;
+        height: 16px;
+        fill: currentColor;
+      }
+
+      .btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .btn {
+        font-size: 12px;
+        padding: 5px 12px;
+        border: 1px solid var(--line-2);
+        color: var(--dim);
+        border-radius: 2px;
+      }
+
+      .btn:hover {
+        color: var(--fg-bright);
+        border-color: var(--muted);
+      }
+
+      .btn.primary {
+        color: var(--green);
+        border-color: rgba(184, 197, 114, 0.45);
+      }
+
+      .btn.primary:hover {
+        background: rgba(184, 197, 114, 0.08);
+        color: var(--green);
+      }
+
+      /* Sections */
+      .block {
+        padding: 40px 0 8px;
+      }
+
+      .cmd {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        font-size: 12px;
+        color: var(--muted);
+        margin: 0 0 20px;
+        font-weight: 400;
+      }
+
+      .cmd .dollar {
+        color: var(--yellow);
+        margin-right: 6px;
+      }
+
+      .cmd .meta {
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      .box {
+        border: 1px solid var(--line);
+        background: var(--bg-1);
+        padding: 18px 20px;
+        border-radius: 2px;
+      }
+
+      .box p {
+        margin: 0 0 12px;
+        color: var(--dim);
+      }
+
+      .box p:last-child {
+        margin-bottom: 0;
+      }
+
+      /* Timeline */
+      .timeline {
+        list-style: none;
+        margin: 0;
+        padding: 0 0 0 30px;
+        position: relative;
+      }
+
+      .timeline::before {
+        content: "";
+        position: absolute;
+        left: 13px;
+        top: 8px;
+        bottom: 8px;
+        width: 1px;
+        background: var(--line-2);
+      }
+
+      .timeline li {
+        position: relative;
+        margin-bottom: 26px;
+      }
+
+      .timeline li::before {
+        content: "";
+        position: absolute;
+        left: -20px;
+        top: 8px;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: var(--c, var(--green));
+        box-shadow: 0 0 0 3px var(--bg);
+      }
+
+      .timeline .role {
+        font-size: 12px;
+        color: var(--c, var(--green));
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+      }
+
+      .timeline .role .when {
+        color: var(--muted);
+        font-size: 11px;
+        white-space: nowrap;
+      }
+
+      .timeline .desc {
+        margin: 2px 0 0;
+        color: var(--fg);
+      }
+
+      /* Repo-style collapsibles */
+      .repos {
+        border-top: 1px solid var(--line);
+      }
+
+      details {
+        border-bottom: 1px solid var(--line);
+      }
+
+      summary {
+        list-style: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        padding: 11px 4px;
+        user-select: none;
+      }
+
+      summary::-webkit-details-marker {
+        display: none;
+      }
+
+      summary:hover {
+        background: var(--bg-1);
+      }
+
+      summary .chev {
+        color: var(--muted);
+        font-size: 11px;
+        width: 10px;
+        transition: transform 0.15s;
+      }
+
+      details[open] summary .chev {
+        transform: rotate(90deg);
+      }
+
+      summary .icon {
+        width: 14px;
+        height: 14px;
+        fill: none;
+        stroke: var(--muted);
+        stroke-width: 1.6;
+        flex: none;
+      }
+
+      summary .name {
+        color: var(--fg-bright);
+        font-weight: 500;
+      }
+
+      summary .tagline {
+        color: var(--muted);
+        font-size: 12px;
+        flex: 1;
+        min-width: 0;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      summary .count {
+        color: var(--muted);
+        font-size: 11px;
+      }
+
+      .repo-body {
+        padding: 2px 4px 18px 34px;
+        font-size: 13px;
+      }
+
+      .repo-body > p {
+        color: var(--dim);
+        margin: 0 0 10px;
+      }
+
+      .repo-body .sub {
+        color: var(--yellow);
+        font-size: 11px;
+        margin: 14px 0 4px;
+      }
+
+      .ls {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+      }
+
+      .ls li {
+        display: flex;
+        gap: 10px;
+        padding: 3px 0;
+        color: var(--dim);
+      }
+
+      .ls li::before {
+        content: "├─";
+        color: var(--line-2);
+        flex: none;
+      }
+
+      .ls li:last-child::before {
+        content: "└─";
+      }
+
+      .ls .label {
+        flex: 1;
+        min-width: 0;
+      }
+
+      .ls a {
+        word-break: break-all;
+      }
+
+      .ls .nested {
+        list-style: none;
+        padding: 0;
+        margin: 2px 0 0;
+      }
+
+      .ls .nested li::before {
+        content: "·";
+      }
+
+      /* Papers */
+      .papers {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 10px;
+      }
+
+      .papers a {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
+        border: 1px solid var(--line);
+        background: var(--bg-1);
+        padding: 12px 16px;
+        color: var(--fg);
+        border-radius: 2px;
+      }
+
+      .papers a:hover {
+        border-color: var(--line-2);
+        background: var(--bg-2);
+        color: var(--fg-bright);
+      }
+
+      .papers .file {
+        color: var(--red);
+        font-size: 12px;
+        flex: none;
+      }
+
+      .papers .title {
+        flex: 1;
+      }
+
+      .papers .what {
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      footer {
+        margin-top: 56px;
+        border-top: 1px solid var(--line);
+      }
+
+      footer .wrap {
+        display: flex;
+        justify-content: space-between;
+        height: 48px;
+        align-items: center;
+        font-size: 11px;
+        color: var(--muted);
+      }
+
+      footer a {
+        color: var(--fg);
+      }
+
+      @media (max-width: 640px) {
+        .hero {
+          grid-template-columns: 1fr;
+          gap: 24px;
+          padding-top: 32px;
+        }
+
+        .portrait {
+          align-items: flex-start;
+        }
+
+        #field {
+          width: 160px;
+          height: 160px;
+        }
+
+        .timeline .role {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        summary .tagline {
+          display: none;
+        }
+
+        summary .name {
+          flex: 1;
+        }
+
+        .papers a {
+          flex-wrap: wrap;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        main section,
+        .brand .cursor {
+          animation: none;
+        }
       }
     </style>
   </head>
 
   <body>
-    <div id="page-wrapper">
+    <header>
+      <div class="wrap">
+        <a class="brand" href="#top">adi<span class="cursor"></span></a>
+        <nav>
+          <a href="#experience">experience</a>
+          <a href="#projects">projects</a>
+          <a href="#papers">papers</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="wrap" id="top">
       <!-- Hero -->
-      <div id="hero">
-        <h3>
-          Hi. This page intros me briefly and lists a small subset of things I
-          have built over the years.
-        </h3>
-        <img id="heroImg" src="img/thinking.gif" style="border-radius: 50%" />
-      </div>
-
-      <div id="container">
-        <p>
-          I am Adi. I am the founder of
-          <a href="https://stainedglass.tech" target="_blank" rel="noopener">Stained Glass</a>
-          <br /><br />
-          Previously I founded 3 other companies in the web3 space and raised VC
-          funding for all 3. Including from Binance Labs, Menlo Ventures,
-          Village Global, NGC, Nima, FJ Labs and prominent angels like Sandeep
-          Nailwal, Batuhan Dasgin, Ivan Bogatyy, Ashwin Ramachandran amongst
-          others.
-          <br /><br />
-          Studied CS in both undergrad and grad. Went to UW-Madison for grad
-          school and specialized in Distributed Systems. Worked at Amazon and
-          Google.
-        </p>
-
-        <h2>Links</h2>
-        <div class="links-row">
-          <a
-            href="https://www.linkedin.com/in/adikancherla/"
-            target="_blank"
-            class="link-linkedin"
-          >
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
-              />
-            </svg>
-            LinkedIn
-          </a>
-          <a href="https://x.com/superrsage" target="_blank" class="link-x">
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"
-              />
-            </svg>
-          </a>
-          <a
-            href="https://github.com/superrsage"
-            target="_blank"
-            class="link-github"
-          >
-            <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path
-                d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
-              />
-            </svg>
-            GitHub
-          </a>
+      <section class="hero">
+        <div class="portrait">
+          <canvas id="field" aria-hidden="true"></canvas>
+          <span class="caption">// distributed, mostly</span>
         </div>
 
-        <h2>Projects</h2>
+        <div>
+          <p class="prompt-line"><span class="tilde">~</span> whoami</p>
+          <h1>adi</h1>
+          <p class="bio">
+            founder. studied cs in undergrad and grad, specialized in
+            <strong>distributed systems</strong> at uw-madison, then worked at
+            <strong>amazon</strong> and <strong>google</strong>. this page
+            lists a small subset of things i have built over the years.
+          </p>
+          <p class="now">
+            <span class="arrow">▸</span>building
+            <a
+              href="https://stainedglass.tech"
+              target="_blank"
+              rel="noopener"
+              >stained glass</a
+            >
+          </p>
 
-        <div id="projects-grid">
-          <div class="project-card card-infinity">
-            <h3>Infinity</h3>
-            <p>A decentralized exchange for NFTs. Raised $3M in VC funding.</p>
-            <ul>
-              <li>
-                NFT exchange contracts with autosniping and more:
-                <a
-                  href="https://github.com/infinitydotxyz/exchange-contracts-v2"
-                  target="_blank"
-                  rel="noopener"
-                  >Contracts</a
-                >
-              </li>
-              <li>
-                Frontend for the exchange:
-                <a
-                  href="https://github.com/infinitydotxyz/fe-infinity"
-                  target="_blank"
-                  rel="noopener"
-                  >Frontend</a
-                >
-              </li>
-              <li>
-                Backend for the exchange:
-                <a
-                  href="https://github.com/infinitydotxyz/be-infinity"
-                  target="_blank"
-                  rel="noopener"
-                  >Backend</a
-                >
-              </li>
-              <li>
-                Matching engine:
-                <a
-                  href="https://github.com/infinitydotxyz/matching-engine"
-                  target="_blank"
-                  rel="noopener"
-                  >Matching engine</a
-                >
-              </li>
-              <li>
-                Functions:
-                <a
-                  href="https://github.com/infinitydotxyz/functions"
-                  target="_blank"
-                  rel="noopener"
-                  >Functions</a
-                >
-              </li>
-              <li>
-                Library of functions:
-                <a
-                  href="https://github.com/infinitydotxyz/lib"
-                  target="_blank"
-                  rel="noopener"
-                  >Lib</a
-                >
-              </li>
-              <li>
-                NFT Collection Service:
-                <a
-                  href="https://github.com/infinitydotxyz/nft-collection-service"
-                  target="_blank"
-                  rel="noopener"
-                  >NFT Collection Service</a
-                >
-              </li>
-              <li>
-                Social data listener:
-                <a
-                  href="https://github.com/infinitydotxyz/social-data-listener"
-                  target="_blank"
-                  rel="noopener"
-                  >Social data listener</a
-                >
-              </li>
-              <li>
-                Sales liquidity collector:
-                <a
-                  href="https://github.com/infinitydotxyz/sales-liquidity-collector"
-                  target="_blank"
-                  rel="noopener"
-                  >Sales liquidity collector</a
-                >
-              </li>
-              <li>
-                Doge2048 Contracts:
-                <a
-                  href="https://github.com/infinitydotxyz/doge2048-contracts"
-                  target="_blank"
-                  rel="noopener"
-                  >Doge2048 Contracts</a
-                >
-              </li>
-              <li>
-                Transaction Broadcaster:
-                <a
-                  href="https://github.com/infinitydotxyz/transaction-broadcaster"
-                  target="_blank"
-                  rel="noopener"
-                  >Transaction Broadcaster</a
-                >
-              </li>
-              <li>
-                PleasrDoge:
-                <a
-                  href="https://github.com/infinitydotxyz/pleasrdoge"
-                  target="_blank"
-                  rel="noopener"
-                  >PleasrDoge</a
-                >
-              </li>
-              <li>
-                NFT sales listener:
-                <a
-                  href="https://github.com/infinitydotxyz/nft-sales-listener"
-                  target="_blank"
-                  rel="noopener"
-                  >NFT sales listener</a
-                >
-              </li>
-              <li>
-                NFT transfers:
-                <a
-                  href="https://github.com/infinitydotxyz/nft-transfers"
-                  target="_blank"
-                  rel="noopener"
-                  >NFT transfers</a
-                >
-              </li>
-              <li>
-                Pixelscore paper:
-                <a href="pixelscore.pdf" target="_blank" rel="noopener"
-                  >Pixelscore</a
-                >
-              </li>
-              <li>
-                Pixelscore:
-                <a
-                  href="https://github.com/infinitydotxyz/pixelscore"
-                  target="_blank"
-                  rel="noopener"
-                  >Pixelscore</a
-                >
-              </li>
-              <li>
-                Pixelscore Frontend:
-                <a
-                  href="https://github.com/infinitydotxyz/fe-pixelscore"
-                  target="_blank"
-                  rel="noopener"
-                  >Pixelscore Frontend</a
-                >
-              </li>
-            </ul>
+          <ul class="tags">
+            <li style="--c: var(--green)">distributed systems</li>
+            <li style="--c: var(--aqua)">web3</li>
+            <li style="--c: var(--yellow)">smart contracts</li>
+            <li style="--c: var(--orange)">nft exchanges</li>
+            <li style="--c: var(--purple)">ml</li>
+            <li style="--c: var(--mint)">databases</li>
+            <li style="--c: var(--red)">amazon</li>
+            <li style="--c: var(--aqua)">google</li>
+            <li style="--c: var(--fg)">uw-madison</li>
+          </ul>
+
+          <div class="socials">
+            <a
+              href="https://github.com/adikancherla"
+              target="_blank"
+              rel="noopener"
+              aria-label="GitHub"
+            >
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://x.com/adikancherla"
+              target="_blank"
+              rel="noopener"
+              aria-label="X"
+            >
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-4.714-6.231-5.401 6.231H2.746l7.73-8.835L1.254 2.25H8.08l4.253 5.622 5.911-5.622zm-1.161 17.52h1.833L7.084 4.126H5.117z"
+                />
+              </svg>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/adikancherla/"
+              target="_blank"
+              rel="noopener"
+              aria-label="LinkedIn"
+            >
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"
+                />
+              </svg>
+            </a>
           </div>
 
-          <div class="project-card card-mavrik">
-            <h3>Mavrik labs&nbsp;</h3>
-            <p>Pump fun for NFTs. Incubated at Binance Labs Season 2.</p>
-            <ul>
-              <li>
-                NFT Company demo. Pump fun for NFTs (June 2019):
-                <a
-                  href="https://youtu.be/SbkAfji3dq0"
-                  target="_blank"
-                  rel="noopener"
-                  >https://youtu.be/SbkAfji3dq0</a
-                >
-              </li>
-              <li>
-                Landing page - ​​<a
-                  href="https://bitbucket.org/mavriklabs/landing-page"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/mavriklabs/landing-page</a
-                >
-              </li>
-              <li>
-                Landing page 2 -
-                <a
-                  href="https://bitbucket.org/mavriklabs/mavrik-landing-page"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/mavriklabs/mavrik-landing-page</a
-                >
-              </li>
-              <li>
-                Landing page 3 -
-                <a
-                  href="https://bitbucket.org/mavriklabs/landing-page-backend"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/mavriklabs/landing-page-backend</a
-                >
-              </li>
-              <li>
-                Mavrik money Android -
-                <a
-                  href="https://bitbucket.org/mavriklabs/mavrik-money-android"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/mavriklabs/mavrik-money-android</a
-                >
-              </li>
-              <li>
-                Mavrik money backend -
-                <a
-                  href="https://bitbucket.org/mavriklabs/mavrik-money-backend"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/mavriklabs/mavrik-money-backend</a
-                >
-              </li>
-              <li>
-                Mavrik money ios -
-                <a
-                  href="https://bitbucket.org/mavriklabs/mavrik-money-ios"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/mavriklabs/mavrik-money-ios</a
-                >
-              </li>
-              <li>
-                Mock apis -
-                <a
-                  href="https://bitbucket.org/mavriklabs/builder-mock-apis"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/mavriklabs/builder-mock-apis</a
-                >
-              </li>
-              <li>
-                NFT Smart contracts:
-                <a
-                  href="https://github.com/superrsage/mavrik-contracts-backend"
-                  target="_blank"
-                  rel="noopener"
-                  >https://github.com/superrsage/mavrik-contracts-backend</a
-                >
-              </li>
-              <li>
-                Satoshi treasure:
-                <a
-                  href="https://github.com/superrsage/satoshi-treasure"
-                  target="_blank"
-                  rel="noopener"
-                  >https://github.com/superrsage/satoshi-treasure</a
-                >
-              </li>
-              <li>
-                MultiNFT - an ERC-1155 project:
-                <a
-                  href="https://github.com/superrsage/multinft-backend"
-                  target="_blank"
-                  rel="noopener"
-                  >https://github.com/superrsage/multinft-backend</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="project-card card-picolo">
-            <h3>Picolo Labs&nbsp;</h3>
-            <p>
-              A decentralized database network to store queryable data. Meant to
-              be used by Dapps built on blockchains. Raised $2.2M in funding
-              from top Silicon Valley investors.&nbsp;
-            </p>
-            <ul>
-              <li>
-                Whitepaper:
-                <a href="picolo.pdf" target="_blank" rel="noopener">here</a>
-              </li>
-              <li>
-                A predoc for the whitepaper is here:
-                <a
-                  href="https://docs.google.com/document/d/1U0byLVq3-wvurX99fU3RiKGaDFIuHKZgQrkI4tDRLtY/edit?usp=sharing"
-                  target="_blank"
-                  rel="noopener"
-                  >https://docs.google.com/document/d/1U0byLVq3-wvurX99fU3RiKGaDFIuHKZgQrkI4tDRLtY/edit?usp=sharing</a
-                >
-              </li>
-            </ul>
-            <p class="sub-label">Demos:</p>
-            <ul>
-              <li>
-                Gas savings achieved by storing cryptokitties offchain :) :
-                <a
-                  href="https://www.youtube.com/watch?v=w8ayaB_HQ8A"
-                  target="_blank"
-                  rel="noopener"
-                  >https://www.youtube.com/watch?v=w8ayaB_HQ8A</a
-                >
-              </li>
-              <li>
-                Picolo vs Filecoin:
-                <a
-                  href="https://youtu.be/qWKJZo2WghU"
-                  target="_blank"
-                  rel="noopener"
-                  >https://youtu.be/qWKJZo2WghU</a
-                >
-              </li>
-            </ul>
-            <p class="sub-label">Related code:</p>
-            <ul>
-              <li>
-                <a
-                  href="https://bitbucket.org/zzxcodes/picolonet-core"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/picolonet-core</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://bitbucket.org/zzxcodes/picolonetbot"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/picolonetbot</a
-                >
-              </li>
-              <li>
-                <a
-                  href="https://bitbucket.org/zzxcodes/picolo-wcef"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/picolo-wcef</a
-                >
-              </li>
-            </ul>
-          </div>
-
-          <div class="project-card card-lstm" id="lstm-card">
-            <h3>LSTM</h3>
-            <p>
-              LSTM for predicting crypto prices: Current thinking towards
-              methods for training AI algorithms that make price predictions for
-              cryptos and take bets from users are discussed. AI algorithms used
-              here work on two distinct types of data: unstructured in the form
-              of text and structured in the form of exchange data and bets on
-              the platform. While the research on sentiment analysis on
-              unstructured data is vast and several off the shelf solutions are
-              available, we explore an approach based on LSTM networks. For
-              structured data, a novel approach is proposed where the state of
-              the platform (all current bets, buzzing topics, randomly
-              timestamped snapshots of past platform state) is reduced to a
-              "game state" and presented as a Markov Decision Process. Incentive
-              decay functions that govern the payouts made to users for
-              contributing on the platform are discussed.
-            </p>
-            <ul>
-              <li>
-                Link to paper
-                <a href="lstm.pdf" target="_blank" rel="noopener">here</a>
-              </li>
-            </ul>
-          </div>
-
-          <div class="project-card card-random" id="random-card">
-            <h3>Random</h3>
-            <ol>
-              <li>
-                Can&rsquo;t remember what I wrote these functions for:
-                <a
-                  href="https://github.com/adikancherla/texfiles/blob/master/paper.pdf"
-                  target="_blank"
-                  rel="noopener"
-                  >https://github.com/adikancherla/texfiles/blob/master/paper.pdf</a
-                >
-              </li>
-              <li>
-                McAfee Pump n Dump bot:
-                <a
-                  href="https://github.com/adikancherla/mcafeePnDbot"
-                  target="_blank"
-                  rel="noopener"
-                  >https://github.com/superrsage/mcafeePnDbot</a
-                >
-              </li>
-              <li>
-                Bitmex trading bot:
-                <a
-                  href="https://github.com/adikancherla/bmbx"
-                  target="_blank"
-                  rel="noopener"
-                  >https://github.com/adikancherla/bmbx</a
-                >
-                (private repo due to api keys, will make it public after
-                cleanup)
-              </li>
-              <li>
-                PDF form filler:
-                <a
-                  href="https://bitbucket.org/mavriklabs/pdf-form-filler"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/mavriklabs/pdf-form-filler</a
-                >
-              </li>
-              <li>
-                Edge Compute: POC to distribute compute workloads to edge
-                devices:
-                <a
-                  href="https://bitbucket.org/zzxcodes/edge-demo"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/edge-demo</a
-                >
-              </li>
-              <li>
-                Scripts: Handy zsh scripts:
-                <a
-                  href="https://bitbucket.org/zzxcodes/files"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/files</a
-                >
-              </li>
-              <li>
-                Electroneum miner lmao:&nbsp;
-                <ul>
-                  <li>
-                    <a
-                      href="https://bitbucket.org/zzxcodes/etnminer-pool"
-                      target="_blank"
-                      rel="noopener"
-                      >https://bitbucket.org/zzxcodes/etnminer-pool</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://bitbucket.org/zzxcodes/etnminer-frontend"
-                      target="_blank"
-                      rel="noopener"
-                      >https://bitbucket.org/zzxcodes/etnminer-frontend</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://bitbucket.org/zzxcodes/etnminer-backend"
-                      target="_blank"
-                      rel="noopener"
-                      >https://bitbucket.org/zzxcodes/etnminer-backend</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li>
-                Z Filesystem:
-                <a
-                  href="https://bitbucket.org/zzxcodes/zfs"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/zfs</a
-                >
-              </li>
-              <li>
-                Wishbox - Google but takes action instead of just
-                search:&nbsp;&nbsp;
-                <ul>
-                  <li>
-                    <a
-                      href="https://bitbucket.org/zzxcodes/wishbox"
-                      target="_blank"
-                      rel="noopener"
-                      >https://bitbucket.org/zzxcodes/wishbox</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://youtu.be/ZyPnl71cbT4"
-                      target="_blank"
-                      rel="noopener"
-                      >https://youtu.be/ZyPnl71cbT4</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li>
-                VidyaMap - learning via visualizations:
-                <a
-                  href="https://bitbucket.org/zzxcodes/vidyamap"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/vidyamap</a
-                >
-              </li>
-              <li>
-                Videoness - precursor to Snapchat Memories:&nbsp;
-                <ul>
-                  <li>
-                    <a
-                      href="https://bitbucket.org/zzxcodes/videoness_apps"
-                      target="_blank"
-                      rel="noopener"
-                      >https://bitbucket.org/zzxcodes/videoness_apps</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://bitbucket.org/zzxcodes/videoness"
-                      target="_blank"
-                      rel="noopener"
-                      >https://bitbucket.org/zzxcodes/videoness</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li>
-                The OS: OS for the world of IoT:
-                <a
-                  href="https://bitbucket.org/zzxcodes/theos"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/theos</a
-                >
-              </li>
-              <li>
-                TFTP: Some type of FTP:
-                <a
-                  href="https://bitbucket.org/zzxcodes/tftp"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/tftp</a
-                >
-              </li>
-              <li>
-                SimpleDB - a Redis like DB:
-                <a
-                  href="https://bitbucket.org/zzxcodes/simpledb"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/simpledb</a
-                >
-              </li>
-              <li>
-                My food truck - order food for pickup from trucks around the
-                Amazon campus in Seatlle:
-                <a
-                  href="https://bitbucket.org/zzxcodes/myfoodtruck"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/myfoodtruck</a
-                >
-              </li>
-              <li>
-                Lucy - AI assistant inspired by the movie of the same name:
-                <a
-                  href="https://bitbucket.org/zzxcodes/lucy"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/lucy</a
-                >
-              </li>
-              <li>
-                Life, Universe and Everything:
-                <a
-                  href="https://bitbucket.org/zzxcodes/lifeuniverseandeverything"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/lifeuniverseandeverything</a
-                >
-              </li>
-              <li>
-                Grublr - leftover food donation app
-                <ul>
-                  <li>
-                    <a
-                      href="https://bitbucket.org/zzxcodes/grublraws"
-                      target="_blank"
-                      rel="noopener"
-                      >https://bitbucket.org/zzxcodes/grublraws</a
-                    >
-                  </li>
-                  <li>
-                    <a
-                      href="https://bitbucket.org/zzxcodes/grublr"
-                      target="_blank"
-                      rel="noopener"
-                      >https://bitbucket.org/zzxcodes/grublr</a
-                    >
-                  </li>
-                </ul>
-              </li>
-
-              <li>
-                Friend recommender:
-                <a
-                  href="https://bitbucket.org/zzxcodes/friendrecommender_v1"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/friendrecommender_v1</a
-                >
-              </li>
-              <li>
-                DistriRPC - distributed RPC:
-                <a
-                  href="https://bitbucket.org/zzxcodes/distrirpc"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/distrirpc</a
-                >
-              </li>
-              <li>
-                DistriJNA - high perf filesystem in userspace:
-                <a
-                  href="https://bitbucket.org/zzxcodes/distrifuse"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/distrifuse</a
-                >
-              </li>
-              <li>
-                Book Genre Finder:
-                <a
-                  href="https://bitbucket.org/zzxcodes/bookgenrefinder"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/bookgenrefinder</a
-                >
-              </li>
-              <li>
-                Atomize - Learn new concepts by breaking them down into the
-                smallest pieces:
-                <a
-                  href="https://bitbucket.org/zzxcodes/atomize"
-                  target="_blank"
-                  rel="noopener"
-                  >https://bitbucket.org/zzxcodes/atomize</a
-                >
-              </li>
-            </ol>
+          <div class="btns">
+            <a class="btn" href="#papers">▤ papers</a>
+            <a
+              class="btn primary"
+              href="https://stainedglass.tech"
+              target="_blank"
+              rel="noopener"
+              >stainedglass.tech ↗</a
+            >
           </div>
         </div>
-        <!-- /projects-grid -->
+      </section>
+
+      <!-- Experience -->
+      <section class="block" id="experience">
+        <h2 class="cmd">
+          <span><span class="dollar">$</span>cat experience.log</span>
+        </h2>
+        <ol class="timeline">
+          <li style="--c: var(--green)">
+            <div class="role">
+              <span>founder — stained glass</span><span class="when">now</span>
+            </div>
+            <p class="desc">
+              building
+              <a
+                href="https://stainedglass.tech"
+                target="_blank"
+                rel="noopener"
+                >stainedglass.tech</a
+              >.
+            </p>
+          </li>
+          <li style="--c: var(--aqua)">
+            <div class="role"><span>founder — infinity</span></div>
+            <p class="desc">
+              a decentralized exchange for nfts. raised $3m in vc funding.
+            </p>
+          </li>
+          <li style="--c: var(--orange)">
+            <div class="role"><span>founder — mavrik labs</span></div>
+            <p class="desc">
+              pump fun for nfts. incubated at binance labs season 2.
+            </p>
+          </li>
+          <li style="--c: var(--purple)">
+            <div class="role"><span>founder — picolo labs</span></div>
+            <p class="desc">
+              a decentralized database network for queryable dapp data. raised
+              $2.2m from top silicon valley investors.
+            </p>
+          </li>
+          <li style="--c: var(--yellow)">
+            <div class="role"><span>engineer — amazon, google</span></div>
+            <p class="desc">worked at amazon and google.</p>
+          </li>
+          <li style="--c: var(--mint)">
+            <div class="role"><span>grad school — uw-madison</span></div>
+            <p class="desc">
+              studied cs in both undergrad and grad. specialized in
+              distributed systems.
+            </p>
+          </li>
+        </ol>
+      </section>
+
+      <!-- Backers -->
+      <section class="block" id="backers">
+        <h2 class="cmd">
+          <span><span class="dollar">$</span>cat backed-by.txt</span>
+        </h2>
+        <div class="box">
+          <p>
+            founded 3 companies in the web3 space and raised vc funding for all
+            3, including from:
+          </p>
+          <ul class="tags" style="margin: 0">
+            <li style="--c: var(--yellow)">binance labs</li>
+            <li style="--c: var(--aqua)">menlo ventures</li>
+            <li style="--c: var(--green)">village global</li>
+            <li style="--c: var(--purple)">ngc</li>
+            <li style="--c: var(--orange)">nima</li>
+            <li style="--c: var(--mint)">fj labs</li>
+            <li>sandeep nailwal</li>
+            <li>batuhan dasgin</li>
+            <li>ivan bogatyy</li>
+            <li>ashwin ramachandran</li>
+            <li style="--c: var(--muted)">+ others</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section class="block" id="projects">
+        <h2 class="cmd">
+          <span><span class="dollar">$</span>ls projects/</span>
+          <span class="meta">click to expand</span>
+        </h2>
+
+        <div class="repos">
+          <details open>
+            <summary>
+              <span class="chev">›</span>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
+              <span class="name">infinity</span>
+              <span class="tagline">decentralized nft exchange · $3m raised</span>
+              <span class="count">17</span>
+            </summary>
+            <div class="repo-body">
+              <p>a decentralized exchange for nfts. raised $3m in vc funding.</p>
+              <ul class="ls">
+                <li><span class="label">nft exchange contracts with autosniping and more: <a href="https://github.com/infinitydotxyz/exchange-contracts-v2" target="_blank" rel="noopener">exchange-contracts-v2</a></span></li>
+                <li><span class="label">frontend for the exchange: <a href="https://github.com/infinitydotxyz/fe-infinity" target="_blank" rel="noopener">fe-infinity</a></span></li>
+                <li><span class="label">backend for the exchange: <a href="https://github.com/infinitydotxyz/be-infinity" target="_blank" rel="noopener">be-infinity</a></span></li>
+                <li><span class="label">matching engine: <a href="https://github.com/infinitydotxyz/matching-engine" target="_blank" rel="noopener">matching-engine</a></span></li>
+                <li><span class="label">functions: <a href="https://github.com/infinitydotxyz/functions" target="_blank" rel="noopener">functions</a></span></li>
+                <li><span class="label">library of functions: <a href="https://github.com/infinitydotxyz/lib" target="_blank" rel="noopener">lib</a></span></li>
+                <li><span class="label">nft collection service: <a href="https://github.com/infinitydotxyz/nft-collection-service" target="_blank" rel="noopener">nft-collection-service</a></span></li>
+                <li><span class="label">social data listener: <a href="https://github.com/infinitydotxyz/social-data-listener" target="_blank" rel="noopener">social-data-listener</a></span></li>
+                <li><span class="label">sales liquidity collector: <a href="https://github.com/infinitydotxyz/sales-liquidity-collector" target="_blank" rel="noopener">sales-liquidity-collector</a></span></li>
+                <li><span class="label">doge2048 contracts: <a href="https://github.com/infinitydotxyz/doge2048-contracts" target="_blank" rel="noopener">doge2048-contracts</a></span></li>
+                <li><span class="label">transaction broadcaster: <a href="https://github.com/infinitydotxyz/transaction-broadcaster" target="_blank" rel="noopener">transaction-broadcaster</a></span></li>
+                <li><span class="label">pleasrdoge: <a href="https://github.com/infinitydotxyz/pleasrdoge" target="_blank" rel="noopener">pleasrdoge</a></span></li>
+                <li><span class="label">nft sales listener: <a href="https://github.com/infinitydotxyz/nft-sales-listener" target="_blank" rel="noopener">nft-sales-listener</a></span></li>
+                <li><span class="label">nft transfers: <a href="https://github.com/infinitydotxyz/nft-transfers" target="_blank" rel="noopener">nft-transfers</a></span></li>
+                <li><span class="label">pixelscore paper: <a href="pixelscore.pdf" target="_blank" rel="noopener">pixelscore.pdf</a></span></li>
+                <li><span class="label">pixelscore: <a href="https://github.com/infinitydotxyz/pixelscore" target="_blank" rel="noopener">pixelscore</a></span></li>
+                <li><span class="label">pixelscore frontend: <a href="https://github.com/infinitydotxyz/fe-pixelscore" target="_blank" rel="noopener">fe-pixelscore</a></span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="chev">›</span>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
+              <span class="name">mavrik-labs</span>
+              <span class="tagline">pump fun for nfts · binance labs s2</span>
+              <span class="count">4</span>
+            </summary>
+            <div class="repo-body">
+              <p>pump fun for nfts. incubated at binance labs season 2.</p>
+              <ul class="ls">
+                <li><span class="label">nft company demo. pump fun for nfts (june 2019): <a href="https://youtu.be/SbkAfji3dq0" target="_blank" rel="noopener">youtu.be/SbkAfji3dq0</a></span></li>
+                <li><span class="label">nft smart contracts: <a href="https://github.com/adikancherla/mavrik-contracts-backend" target="_blank" rel="noopener">adikancherla/mavrik-contracts-backend</a></span></li>
+                <li><span class="label">satoshi treasure: <a href="https://github.com/adikancherla/satoshi-treasure" target="_blank" rel="noopener">adikancherla/satoshi-treasure</a></span></li>
+                <li><span class="label">multinft, an erc-1155 project: <a href="https://github.com/adikancherla/multinft-backend" target="_blank" rel="noopener">adikancherla/multinft-backend</a></span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="chev">›</span>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
+              <span class="name">picolo-labs</span>
+              <span class="tagline">decentralized database network · $2.2m raised</span>
+              <span class="count">7</span>
+            </summary>
+            <div class="repo-body">
+              <p>
+                a decentralized database network to store queryable data. meant
+                to be used by dapps built on blockchains. raised $2.2m in
+                funding from top silicon valley investors.
+              </p>
+              <ul class="ls">
+                <li><span class="label">whitepaper: <a href="picolo.pdf" target="_blank" rel="noopener">picolo.pdf</a></span></li>
+                <li><span class="label">a predoc for the whitepaper: <a href="https://docs.google.com/document/d/1U0byLVq3-wvurX99fU3RiKGaDFIuHKZgQrkI4tDRLtY/edit?usp=sharing" target="_blank" rel="noopener">google doc</a></span></li>
+              </ul>
+              <p class="sub"># demos</p>
+              <ul class="ls">
+                <li><span class="label">gas savings achieved by storing cryptokitties offchain :) <a href="https://www.youtube.com/watch?v=w8ayaB_HQ8A" target="_blank" rel="noopener">youtube.com/watch?v=w8ayaB_HQ8A</a></span></li>
+                <li><span class="label">picolo vs filecoin: <a href="https://youtu.be/qWKJZo2WghU" target="_blank" rel="noopener">youtu.be/qWKJZo2WghU</a></span></li>
+              </ul>
+              <p class="sub"># related code</p>
+              <ul class="ls">
+                <li><span class="label"><a href="https://bitbucket.org/zzxcodes/picolonet-core" target="_blank" rel="noopener">zzxcodes/picolonet-core</a></span></li>
+                <li><span class="label"><a href="https://bitbucket.org/zzxcodes/picolonetbot" target="_blank" rel="noopener">zzxcodes/picolonetbot</a></span></li>
+                <li><span class="label"><a href="https://bitbucket.org/zzxcodes/picolo-wcef" target="_blank" rel="noopener">zzxcodes/picolo-wcef</a></span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="chev">›</span>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
+              <span class="name">lstm</span>
+              <span class="tagline">lstm for predicting crypto prices</span>
+              <span class="count">1</span>
+            </summary>
+            <div class="repo-body">
+              <p>
+                lstm for predicting crypto prices: current thinking towards
+                methods for training ai algorithms that make price predictions
+                for cryptos and take bets from users are discussed. ai algorithms used here work on two distinct types of data:
+                unstructured in the form of text and structured in the form of
+                exchange data and bets on the platform. while the research on
+                sentiment analysis on unstructured data is vast and several off
+                the shelf solutions are available, we explore an approach based
+                on lstm networks. for structured data, a novel approach is
+                proposed where the state of the platform (all current bets,
+                buzzing topics, randomly timestamped snapshots of past platform
+                state) is reduced to a "game state" and presented as a markov
+                decision process. incentive decay functions that govern the
+                payouts made to users for contributing on the platform are
+                discussed.
+              </p>
+              <ul class="ls">
+                <li><span class="label">link to paper: <a href="lstm.pdf" target="_blank" rel="noopener">lstm.pdf</a></span></li>
+              </ul>
+            </div>
+          </details>
+
+          <details>
+            <summary>
+              <span class="chev">›</span>
+              <svg class="icon" viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /></svg>
+              <span class="name">random</span>
+              <span class="tagline">bots, filesystems, databases, apps</span>
+              <span class="count">21</span>
+            </summary>
+            <div class="repo-body">
+              <ul class="ls">
+                <li><span class="label">can&rsquo;t remember what i wrote these functions for: <a href="https://github.com/adikancherla/texfiles/blob/master/paper.pdf" target="_blank" rel="noopener">texfiles/paper.pdf</a></span></li>
+                <li><span class="label">mcafee pump n dump bot: <a href="https://github.com/adikancherla/mcafeePnDbot" target="_blank" rel="noopener">mcafeepndbot</a></span></li>
+                <li><span class="label">edge compute: poc to distribute compute workloads to edge devices: <a href="https://bitbucket.org/zzxcodes/edge-demo" target="_blank" rel="noopener">edge-demo</a></span></li>
+                <li><span class="label">scripts: handy zsh scripts: <a href="https://bitbucket.org/zzxcodes/files" target="_blank" rel="noopener">files</a></span></li>
+                <li>
+                  <span class="label">electroneum miner lmao:
+                    <ul class="nested">
+                      <li><a href="https://bitbucket.org/zzxcodes/etnminer-pool" target="_blank" rel="noopener">etnminer-pool</a></li>
+                      <li><a href="https://bitbucket.org/zzxcodes/etnminer-frontend" target="_blank" rel="noopener">etnminer-frontend</a></li>
+                      <li><a href="https://bitbucket.org/zzxcodes/etnminer-backend" target="_blank" rel="noopener">etnminer-backend</a></li>
+                    </ul>
+                  </span>
+                </li>
+                <li><span class="label">z filesystem: <a href="https://bitbucket.org/zzxcodes/zfs" target="_blank" rel="noopener">zfs</a></span></li>
+                <li>
+                  <span class="label">wishbox - google but takes action instead of just search:
+                    <ul class="nested">
+                      <li><a href="https://bitbucket.org/zzxcodes/wishbox" target="_blank" rel="noopener">wishbox</a></li>
+                      <li><a href="https://youtu.be/ZyPnl71cbT4" target="_blank" rel="noopener">youtu.be/ZyPnl71cbT4</a></li>
+                    </ul>
+                  </span>
+                </li>
+                <li><span class="label">vidyamap - learning via visualizations: <a href="https://bitbucket.org/zzxcodes/vidyamap" target="_blank" rel="noopener">vidyamap</a></span></li>
+                <li>
+                  <span class="label">videoness - precursor to snapchat memories:
+                    <ul class="nested">
+                      <li><a href="https://bitbucket.org/zzxcodes/videoness_apps" target="_blank" rel="noopener">videoness_apps</a></li>
+                      <li><a href="https://bitbucket.org/zzxcodes/videoness" target="_blank" rel="noopener">videoness</a></li>
+                    </ul>
+                  </span>
+                </li>
+                <li><span class="label">the os: os for the world of iot: <a href="https://bitbucket.org/zzxcodes/theos" target="_blank" rel="noopener">theos</a></span></li>
+                <li><span class="label">tftp: some type of ftp: <a href="https://bitbucket.org/zzxcodes/tftp" target="_blank" rel="noopener">tftp</a></span></li>
+                <li><span class="label">simpledb - a redis like db: <a href="https://bitbucket.org/zzxcodes/simpledb" target="_blank" rel="noopener">simpledb</a></span></li>
+                <li><span class="label">my food truck - order food for pickup from trucks around the amazon campus in seattle: <a href="https://bitbucket.org/zzxcodes/myfoodtruck" target="_blank" rel="noopener">myfoodtruck</a></span></li>
+                <li><span class="label">lucy - ai assistant inspired by the movie of the same name: <a href="https://bitbucket.org/zzxcodes/lucy" target="_blank" rel="noopener">lucy</a></span></li>
+                <li><span class="label">life, universe and everything: <a href="https://bitbucket.org/zzxcodes/lifeuniverseandeverything" target="_blank" rel="noopener">lifeuniverseandeverything</a></span></li>
+                <li>
+                  <span class="label">grublr - leftover food donation app:
+                    <ul class="nested">
+                      <li><a href="https://bitbucket.org/zzxcodes/grublraws" target="_blank" rel="noopener">grublraws</a></li>
+                      <li><a href="https://bitbucket.org/zzxcodes/grublr" target="_blank" rel="noopener">grublr</a></li>
+                    </ul>
+                  </span>
+                </li>
+                <li><span class="label">friend recommender: <a href="https://bitbucket.org/zzxcodes/friendrecommender_v1" target="_blank" rel="noopener">friendrecommender_v1</a></span></li>
+                <li><span class="label">distrirpc - distributed rpc: <a href="https://bitbucket.org/zzxcodes/distrirpc" target="_blank" rel="noopener">distrirpc</a></span></li>
+                <li><span class="label">distrijna - high perf filesystem in userspace: <a href="https://bitbucket.org/zzxcodes/distrifuse" target="_blank" rel="noopener">distrifuse</a></span></li>
+                <li><span class="label">book genre finder: <a href="https://bitbucket.org/zzxcodes/bookgenrefinder" target="_blank" rel="noopener">bookgenrefinder</a></span></li>
+                <li><span class="label">atomize - learn new concepts by breaking them down into the smallest pieces: <a href="https://bitbucket.org/zzxcodes/atomize" target="_blank" rel="noopener">atomize</a></span></li>
+              </ul>
+            </div>
+          </details>
+        </div>
+      </section>
+
+      <!-- Papers -->
+      <section class="block" id="papers">
+        <h2 class="cmd">
+          <span><span class="dollar">$</span>ls papers/*.pdf</span>
+        </h2>
+        <ul class="papers">
+          <li>
+            <a href="picolo.pdf" target="_blank" rel="noopener">
+              <span class="file">picolo.pdf</span>
+              <span class="title">picolo whitepaper</span>
+              <span class="what">decentralized db</span>
+            </a>
+          </li>
+          <li>
+            <a href="pixelscore.pdf" target="_blank" rel="noopener">
+              <span class="file">pixelscore.pdf</span>
+              <span class="title">pixelscore</span>
+              <span class="what">nft scoring</span>
+            </a>
+          </li>
+          <li>
+            <a href="lstm.pdf" target="_blank" rel="noopener">
+              <span class="file">lstm.pdf</span>
+              <span class="title">lstm for predicting crypto prices</span>
+              <span class="what">ml</span>
+            </a>
+          </li>
+        </ul>
+      </section>
+    </main>
+
+    <footer>
+      <div class="wrap">
+        <span id="clock">&nbsp;</span>
+        <a href="#top">top ↑</a>
       </div>
-    </div>
+    </footer>
 
     <script>
-      // Scroll-triggered card animations
-      const cards = document.querySelectorAll(".project-card");
-      const io = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              entry.target.classList.add("in-view");
-              io.unobserve(entry.target);
-            }
-          });
-        },
-        { threshold: 0.07 },
-      );
+      // Rotating point sphere drawn as characters, a nod to the reference's
+      // dithered portrait.
+      (function () {
+        const canvas = document.getElementById("field");
+        const ctx = canvas.getContext("2d");
+        const chars = ".·:+*";
+        const colors = ["#7c6f64", "#a89984", "#d4be98", "#b8c572", "#88bfb3"];
+        const N = 520;
+        const pts = [];
+        for (let i = 0; i < N; i++) {
+          // Fibonacci sphere
+          const y = 1 - (i / (N - 1)) * 2;
+          const r = Math.sqrt(1 - y * y);
+          const t = i * 2.399963;
+          pts.push([Math.cos(t) * r, y, Math.sin(t) * r, Math.random()]);
+        }
 
-      cards.forEach((card, i) => {
-        card.style.transitionDelay = `${i * 0.07}s`;
-        io.observe(card);
-      });
+        let size = 0;
+        function resize() {
+          const dpr = window.devicePixelRatio || 1;
+          size = canvas.clientWidth;
+          canvas.width = size * dpr;
+          canvas.height = size * dpr;
+          ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+          ctx.textAlign = "center";
+          ctx.textBaseline = "middle";
+        }
+        resize();
+        window.addEventListener("resize", resize);
+
+        const still = window.matchMedia(
+          "(prefers-reduced-motion: reduce)",
+        ).matches;
+        let a = 0.6;
+
+        function frame(ts) {
+          ctx.clearRect(0, 0, size, size);
+          const c = size / 2;
+          const R = size * 0.4;
+          const ca = Math.cos(a),
+            sa = Math.sin(a);
+          const tilt = 0.35,
+            ct = Math.cos(tilt),
+            st = Math.sin(tilt);
+          ctx.font = `${Math.max(8, size / 26)}px "JetBrains Mono", monospace`;
+          for (const [x, y, z, n] of pts) {
+            const x1 = x * ca + z * sa;
+            const z1 = -x * sa + z * ca;
+            const y2 = y * ct - z1 * st;
+            const z2 = y * st + z1 * ct;
+            const depth = (z2 + 1) / 2; // 0 back, 1 front
+            const flicker = 0.5 + 0.5 * Math.sin(ts / 600 + n * 40);
+            const idx = Math.min(
+              chars.length - 1,
+              Math.floor(depth * chars.length * (0.75 + 0.25 * flicker)),
+            );
+            ctx.globalAlpha = 0.15 + depth * 0.85;
+            ctx.fillStyle =
+              colors[Math.min(colors.length - 1, Math.floor(depth * 3 + n * 2))];
+            ctx.fillText(chars[idx], c + x1 * R, c + y2 * R);
+          }
+          ctx.globalAlpha = 1;
+          if (!still) {
+            a += 0.004;
+            requestAnimationFrame(frame);
+          }
+        }
+        requestAnimationFrame(frame);
+      })();
+
+      // Footer clock
+      (function () {
+        const el = document.getElementById("clock");
+        const fmt = new Intl.DateTimeFormat([], {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: false,
+          timeZoneName: "short",
+        });
+        const tick = () => (el.textContent = fmt.format(new Date()).toLowerCase());
+        tick();
+        setInterval(tick, 30000);
+      })();
     </script>
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-app.js"></script>
-
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-     https://firebase.google.com/docs/web/setup#available-libraries -->
     <script src="https://www.gstatic.com/firebasejs/8.9.1/firebase-analytics.js"></script>
-
     <script>
-      // Your web app's Firebase configuration
-      // For Firebase JS SDK v7.20.0 and later, measurementId is optional
       var firebaseConfig = {
         apiKey: "AIzaSyBvmi9U2oo8wNiE2Z7-9WPfM8M0Ba6Ke0c",
         authDomain: "personal-website-52a57.firebaseapp.com",
@@ -1157,48 +1118,8 @@
         appId: "1:346634120550:web:bbd4f6d127aee57b41eca7",
         measurementId: "G-L8XNBV7JMM",
       };
-      // Initialize Firebase
       firebase.initializeApp(firebaseConfig);
       firebase.analytics();
     </script>
-
-    <!-- <script>
-    document.addEventListener('DOMContentLoaded', function () {
-      const loadEl = document.querySelector('#load');
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-      // // The Firebase SDK is initialized and available here!
-      //
-      // firebase.auth().onAuthStateChanged(user => { });
-      // firebase.database().ref('/path/to/ref').on('value', snapshot => { });
-      // firebase.firestore().doc('/foo/bar').get().then(() => { });
-      // firebase.functions().httpsCallable('yourFunction')().then(() => { });
-      // firebase.messaging().requestPermission().then(() => { });
-      // firebase.storage().ref('/path/to/ref').getDownloadURL().then(() => { });
-      // firebase.analytics(); // call to activate
-      // firebase.analytics().logEvent('tutorial_completed');
-      // firebase.performance(); // call to activate
-      //
-      // // 🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥
-
-      try {
-        let app = firebase.app();
-        let features = [
-          'auth',
-          'database',
-          'firestore',
-          'functions',
-          'messaging',
-          'storage',
-          'analytics',
-          'remoteConfig',
-          'performance',
-        ].filter(feature => typeof app[feature] === 'function');
-        loadEl.textContent = `Firebase SDK loaded with ${features.join(', ')}`;
-      } catch (e) {
-        console.error(e);
-        loadEl.textContent = 'Error loading the Firebase SDK, check the console.';
-      }
-    });
-  </script> -->
   </body>
 </html>
